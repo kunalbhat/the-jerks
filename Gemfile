@@ -9,6 +9,7 @@ group :web do
   gem 'dm-postgres-adapter'
   gem 'dotenv'
   gem 'haml'
+  gem 'json'
   gem 'sass'
   gem 'sinatra'
 end

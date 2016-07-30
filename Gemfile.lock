@@ -93,6 +93,7 @@ DEPENDENCIES
   dm-postgres-adapter
   dotenv
   haml
+  json
   puma
   sass
   sinatra
