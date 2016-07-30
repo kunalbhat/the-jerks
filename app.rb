@@ -1,6 +1,6 @@
 require 'bundler'
 
-Bundler.require :production
+Bundler.require :web
 Bundler.require :development if development?
 
 get '/style.css' do
