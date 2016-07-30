@@ -1,6 +1,7 @@
 require 'bundler'
 
-Bundler.require
+Bundler.require :production
+Bundler.require :development if development?
 
 require_relative 'config/datamapper'
 
