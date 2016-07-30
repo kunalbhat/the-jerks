@@ -2,6 +2,7 @@ require 'bundler/setup'
 
 Bundler.require :web
 Bundler.require :development if development?
+Dotenv.load
 
 get '/style.css' do
   scss :stylesheet, :style => :expanded
