@@ -3,9 +3,10 @@ require 'bundler'
 Bundler.require :production
 Bundler.require :development if development?
 
-require_relative 'config/datamapper'
-
-get '/' do
-  haml :index, :format => :html5
+get '/style.css' do
+  scss :style
 end
 
+get '/' do
+  haml :index
+end
