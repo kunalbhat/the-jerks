@@ -34,7 +34,7 @@ def read_csv_into_array
   csv_titles = []
 
   CSV.foreach("list.csv", :headers => true) do |row|
-    hash = { :title => row[1], :year => row[0] }
+    hash = { title: row[1], year: row[0] }
     csv_titles.push(hash)
   end
 
@@ -46,20 +46,19 @@ get '/' do
   @films = []
 
   titles[1..5].each do |title|
-    title.each
+    year = title[:year]
+    title = title[:title]
+
+    results = get_result(title)
+
+    results['results'].each do |result|
+      hash = { title: result['title'], year: result['release_date'], id: result['id'] }
+
+      if result['release_date'].include? year
+        @films.push(hash)
+      end
+    end
   end
-
-  # titles[1..5].each do |title|
-  #   year = title['year']
-  #   title = title['title']
-
-  #   results = get_result(title)
-
-  #   results['results'].each do |result|
-  #     hash = { :title => result['title'], :year => result['release_date'], :id => result['id'] }
-  #     @films.push(hash)
-  #   end
-  # end
 
   haml :index
 end
