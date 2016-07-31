@@ -10,6 +10,7 @@ group :web do
   gem 'dotenv'
   gem 'haml'
   gem 'json'
+  gem 'rest-client'
   gem 'sass'
   gem 'sinatra'
 end
