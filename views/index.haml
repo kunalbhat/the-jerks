@@ -1,1 +1,9 @@
 %h1 The JERKS
+
+%table
+  =@films.each do |film|
+    %tr
+      %td=film['title']
+      %td=film['director_name']
+      %td=film['certification']
+      %td=film['runtime']
