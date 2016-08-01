@@ -1,1 +1,1 @@
-DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_BRONZE_URL'])
+DataMapper.setup(:default, ENV['DATABASE_URL'])
