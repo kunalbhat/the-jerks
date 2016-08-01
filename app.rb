@@ -18,6 +18,8 @@ get '/style.css' do
   scss :stylesheet, :style => :expanded
 end
 
+@step_num = 0
+
 # Search TMDB for a movie, return results
 def get_result(title)
   @title = title
@@ -95,12 +97,12 @@ def read_csv_into_array
   return csv_titles
 end
 
-def seed_db
+def seed_db(step_num)
   titles    = read_csv_into_array
   films     = []
   @films_db = []
 
-  titles[1..5].each do |title|
+  titles[step_num+1..step_num+10].each do |title|
     year       = title[:year]
     j          = title[:j]
     e          = title[:e]
@@ -141,15 +143,23 @@ get '/' do
 end
 
 def connect_to_db
-  DataMapper::Model.raise_on_save_failure = true
-  films = seed_db
+  # DataMapper::Model.raise_on_save_failure = true
+  films = seed_db(@step_num)
+
+  p "#{@step_num+1}..#{@step_num+10}"
+
+  @step_num+=10
 
   films.each do |film|
     post = Post.create(tmdb_id: film[:tmdb_id], title: film[:title], director_name: film[:director_name], certification: film[:certification], release_date: film[:release_date], runtime: film[:runtime], j_seen_bool: film[:j_seen_bool], e_seen_bool: film[:e_seen_bool], r_seen_bool: film[:r_seen_bool], k_seen_bool: film[:k_seen_bool], s_seen_bool: film[:s_seen_bool], removal_flag: film[:removal_flag])
   end
+
+  sleep(10)
+
+  connect_to_db
 end
 
-# connect_to_db
+connect_to_db
 
 def read_db
   return Post.all

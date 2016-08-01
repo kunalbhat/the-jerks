@@ -14,7 +14,6 @@ class Post
   property :k_seen_bool   , String
   property :s_seen_bool   , String
   property :removal_flag  , String
-
-  DataMapper.auto_migrate!
-  DataMapper.finalize.auto_upgrade!
 end
+
+DataMapper.finalize.auto_upgrade!

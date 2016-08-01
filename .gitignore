@@ -2,3 +2,4 @@
 *.rbc
 .sass-cache/
 *.env
+*.csv
