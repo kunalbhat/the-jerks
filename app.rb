@@ -7,10 +7,13 @@ Bundler.require :development if development?
 Dotenv.load
 
 # Configurations
-require_relative('config/datamapper')
+require_relative 'config/datamapper'
 
 # Models
-require_relative('models/post')
+require_relative 'models/post'
+
+# Decorators
+require_relative 'decorators/indicator_style'
 
 # Define Sass
 get '/stylesheet.css' do

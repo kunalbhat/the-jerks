@@ -1,4 +1,3 @@
-%h1 The JERKS
 %table
   %thead
     %tr
@@ -15,13 +14,18 @@
   %tbody
     = @films.each do |film|
       %tr
-        %td #{film.release_date}
+        %td #{film.release_date.year}
         %td #{film.title}
         %td #{film.director_name}
         %td #{film.certification}
         %td #{film.runtime}
-        %td #{film.j_seen_bool}
-        %td #{film.e_seen_bool}
-        %td #{film.r_seen_bool}
-        %td #{film.k_seen_bool}
-        %td #{film.s_seen_bool}
+        %td
+          %span{ class: film.j_seen_bool == "1" ? 'circle-indicator success' : 'circle-indicator' }
+        %td
+          %span{ class: film.e_seen_bool == "1" ? 'circle-indicator success' : 'circle-indicator' }
+        %td
+          %span{ class: film.r_seen_bool == "1" ? 'circle-indicator success' : 'circle-indicator' }
+        %td
+          %span{ class: film.k_seen_bool == "1" ? 'circle-indicator success' : 'circle-indicator' }
+        %td
+          %span{ class: film.s_seen_bool == "1" ? 'circle-indicator success' : 'circle-indicator' }
