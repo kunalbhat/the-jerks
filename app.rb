@@ -25,13 +25,14 @@ def search_movie(title)
   @title = title
 
   headers = {
-    content_type:  'json',
-    accept:        'json',
-    api_key:       ENV['TMDB_API_KEY'],
-    query:         @title
+    content_type:        'json',
+    accept:              'json',
+    api_key:             ENV['TMDB_API_KEY'],
+    query:               @title,
+    append_to_response:  'configuration'
   }
 
-  response = RestClient.get "http://api.themoviedb.org/3/search/movie/", { :params => headers }
+  response = RestClient.get "https://api.themoviedb.org/3/search/movie/", { :params => headers }
 
   json_response = JSON.parse(response)
 
@@ -46,4 +47,13 @@ end
 
 get '/proposals' do
   haml :proposals
+end
+
+get '/search' do
+  content_type :json
+  query = params[:query]
+
+  @results = search_movie(query)
+
+  { :data => @results }.to_json
 end
