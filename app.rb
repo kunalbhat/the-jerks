@@ -9,8 +9,11 @@ Dotenv.load
 # Configurations
 require_relative('config/datamapper')
 
+# Models
+require_relative('models/post')
+
 # Define Sass
-get '/style.css' do
+get '/stylesheet.css' do
   scss :stylesheet, :style => :expanded
 end
 

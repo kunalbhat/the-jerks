@@ -1,27 +1,27 @@
 %h1 The JERKS
-
 %table
-  %tr
-    %th
-      %td Year
-      %td Title
-      %td Director
-      %td Rating
-      %td Runtime
-      %td J
-      %td E
-      %td R
-      %td K
-      %td S
-  =@films.each do |film|
+  %thead
     %tr
-      %td=film['release_date']
-      %td=film['title']
-      %td=film['director_name']
-      %td=film['certification']
-      %td=film['runtime']
-      %td=film['j_seen_bool']
-      %td=film['e_seen_bool']
-      %td=film['r_seen_bool']
-      %td=film['k_seen_bool']
-      %td=film['s_seen_bool']
+      %th Year
+      %th Title
+      %th Director
+      %th Rating
+      %th Runtime
+      %th J
+      %th E
+      %th R
+      %th K
+      %th S
+  %tbody
+    = @films.each do |film|
+      %tr
+        %td #{film.release_date}
+        %td #{film.title}
+        %td #{film.director_name}
+        %td #{film.certification}
+        %td #{film.runtime}
+        %td #{film.j_seen_bool}
+        %td #{film.e_seen_bool}
+        %td #{film.r_seen_bool}
+        %td #{film.k_seen_bool}
+        %td #{film.s_seen_bool}

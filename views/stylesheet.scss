@@ -13,3 +13,20 @@ h1 {
   margin: 0;
   padding: 0;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    padding: 5px;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+}
