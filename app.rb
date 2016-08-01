@@ -43,3 +43,7 @@ get '/' do
 
   haml :index
 end
+
+get '/proposals' do
+  haml :proposals
+end
