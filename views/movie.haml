@@ -1,1 +1,8 @@
-= @film_data
+- film = @film_data
+
+%h2="#{film[:title]} (#{film[:year]})"
+%h4= film[:certification]
+
+%p= film[:overview]
+
+%img{ src: "#{film[:image_url]}" }

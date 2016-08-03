@@ -19,16 +19,19 @@ body {
   line-height: 1.5;
 }
 
-h1 {
+h1, h2 {
   font-size: 21px;
-  font-weight: 600;
   margin: 0;
   padding: 0;
 }
 
+h1 {
+  font-weight: 600;
+}
+
 h2 {
-  font-size: 28px;
   font-weight: 300;
+  margin-bottom: 10px;
 }
 
 a, a:link, a:visited, a:active {
@@ -59,8 +62,8 @@ table {
     text-align: left;
   }
 
-  tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.05);
+  tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
   }
 }
 
@@ -89,7 +92,7 @@ table {
 }
 
 .site-container {
-  margin-top: 40px;
+  margin-top: 60px;
   padding: 30px;
 }
 
