@@ -23,7 +23,7 @@
       $.each(results, function(key, val) {
         year = parseInt(val['release_date']);
 
-        $list.append("<li>" + val['title'] + " (" + year + ")</li>");
+        $list.append("<li><a href='/movie/" + val['id']+ "'>" + val['title'] + " (" + year + ")</a></li>");
       });
     }
 
