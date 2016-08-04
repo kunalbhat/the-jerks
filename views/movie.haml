@@ -1,8 +1,11 @@
-- film = @film_data
+.row.row__flex
+  .column.column__flex-one
+    %img{ class: "img-responsive", src: "#{@film_data[:image_url]}" }
 
-%h2="#{film[:title]} (#{film[:year]})"
-%h4= film[:certification]
+  .column.column__flex-four
+    %h2="#{@film_data[:title]} (#{@film_data[:year]})"
+    %h4= @film_data[:certification]
+    %p= @film_data[:overview]
 
-%p= film[:overview]
+    %a{ class: "button", href: "/proposals/new" } Add to Proposals
 
-%img{ src: "#{film[:image_url]}" }

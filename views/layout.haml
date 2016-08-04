@@ -7,10 +7,16 @@
     %script{ src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js' }
   %body
     %header.site-header
-      %h1.site-logo The JERKS
-      %nav.site-nav
-        %a{ href: '/'} The List
-        %a{ href: '/proposals' } Proposals
+      .row.row__flex
+        %div.column.column__flex-one.flex-center
+          %h1.site-logo The JERKS
+        %div.column.column__flex-three
+          %form{ class: 'search-form', id: 'search_form', action: '/search', method: 'get' }
+            %input{ class: 'search-input', name: 'q', placeholder: 'Search for a film', type: 'search', value: '' }
+        %div.column.column__flex-one.flex-center.text-right
+          %nav.site-nav
+            %a{ href: '/'} The List
+            %a{ href: '/proposals' } Proposals
 
     %section.site-container
       = yield

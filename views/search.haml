@@ -1,0 +1,6 @@
+%section{ class: 'search-results', id: 'search_results' }
+  %ul{ class: 'search-results-list', id: 'search_results_list' }
+    - @search_results.each do |result|
+      %li
+        %a{ href: "/movie/#{result['id']}"}
+          =result['title']

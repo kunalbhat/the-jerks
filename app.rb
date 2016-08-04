@@ -77,24 +77,31 @@ get '/' do
 end
 
 get '/proposals' do
-  haml :proposals
+  haml :"proposals/index"
+end
+
+get '/proposals/new' do
+  haml :"proposals/new"
 end
 
 get '/search' do
-  content_type :json
-  query = params[:query]
+  query           = params[:q]
+  results         = search_movie(query)
+  @search_results = []
 
-  @results = search_movie(query)
+  results['results'].each do |result|
+    @search_results.push(result)
+  end
 
-  { :data => @results }.to_json
+  haml :search
 end
 
 get '/movie/:id' do
-  id          = params[:id]
-  film_data   = get_movie_by_id(id)
+  id        = params[:id]
+  film_data = get_movie_by_id(id)
 
   # Get poster
-  poster_size = 'w342'
+  poster_size = 'w185'
   poster_path = film_data['poster_path']
   image_url   = build_image_url(poster_size, poster_path)
 
@@ -102,8 +109,6 @@ get '/movie/:id' do
   title         = film_data['title']
   overview      = film_data['overview']
   year          = DateTime.parse(film_data['release_date']).year
-
-  p film_data
 
   @film_data = { title: title, overview: overview, year: year, image_url: image_url }
 

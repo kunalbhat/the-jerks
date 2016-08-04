@@ -1,5 +1,6 @@
 // Variables
-$success-color: #62b97f;
+$success-color:    #62b97f;
+$highlight-color:  #019cde;
 
 // Global styling
 * {
@@ -35,18 +36,17 @@ h2 {
 }
 
 a, a:link, a:visited, a:active {
-  color: #019cde;
+  color: $highlight-color;
   text-decoration: none;
 
   -webkit-transition: color 0.2s linear;
      -moz-transition: color 0.2s linear;
       -ms-transition: color 0.2s linear;
-       -o-transition: color 0.2s linear;
           transition: color 0.2s linear;
 }
 
 a:hover {
-  color: #0a8cc4;
+  color: darken($highlight-color, 10%);
   text-decoration: underline;
 }
 
@@ -71,18 +71,24 @@ table {
   background-color: #fff;
   border-bottom: 1px solid #dfdfdf;
   box-shadow: 0 0 3px #999;
-  padding: 15px 30px;
+  display: flex;
+  padding: 10px 30px;
   position: fixed;
   top: 0;
   width: 100%;
 
-  .site-logo {
-    float: left;
-  }
+   -webkit-box-align: center;
+      -ms-flex-align: center;
+  -ms-grid-row-align: center;
+       align-items: center;
+
+  -webkit-box-pack: center;
+     -ms-flex-pack: center;
+   justify-content: center;
 }
 
 .site-nav {
-  float: right;
+  width: 100%;
 
   a {
     display: inline-block;
@@ -92,7 +98,7 @@ table {
 }
 
 .site-container {
-  margin-top: 60px;
+  margin-top: 70px;
   padding: 30px;
 }
 
@@ -123,12 +129,16 @@ table {
   }
 }
 
+.search-form {
+  width: 100%;
+}
+
 .search-input {
   border: 1px solid #dfdfdf;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
   outline: none;
-  padding: 12px 3px;
+  padding: 10px 0 10px 3px;
   width: 100%;
 
   -webkit-appearance: none;
@@ -142,4 +152,51 @@ table {
   &:focus {
     border-color: #222;
   }
+}
+
+.row {
+  width: 100%;
+
+  &__flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.column {
+  &__flex-one   { flex: 1; }
+  &__flex-two   { flex: 2; }
+  &__flex-three { flex: 3; }
+  &__flex-four  { flex: 4; }
+
+  &.flex-center {
+    display: flex;
+
+     -webkit-box-align: center;
+        -ms-flex-align: center;
+    -ms-grid-row-align: center;
+           align-items: center;
+  }
+}
+
+.img-responsive {
+  height: auto;
+  max-width: 100%;
+}
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+.button {
+  border: 1px solid $highlight-color;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+.button:hover {
+  border-color: darken($highlight-color, 10%);
+  text-decoration: none;
 }
