@@ -8,7 +8,9 @@ also_reload '/services/movie_info'
 Dotenv.load
 
 require_relative 'config/datamapper'
-require_relative 'models/post'
+require_relative 'models/movie'
+require_relative 'models/user'
+require_relative 'models/proposal'
 require_relative 'services/movie_info'
 
 # Define Sass
@@ -36,7 +38,7 @@ get '/' do
 end
 
 get '/list' do
-  @films = Post.all
+  @movies = Movie.all
 
   haml :list
 end
