@@ -1,4 +1,4 @@
-%h1 J is proposing #{@film['title']} be added to the list
+%h1 J is proposing #{@movie.title} be added to the list
 
 %form{ action: '/proposals/create/' }
   %select{ name: 'proposer' }
@@ -10,5 +10,5 @@
   %label
     State your case:
     %textarea{ name: 'proposal_text' }
-  %input{ type: 'hidden', name: 'id', value: "#{@film['tmdb_id']}" }
+  %input{ type: 'hidden', name: 'id', value: "#{@movie.id}" }
   %input{ type: 'submit', value: 'Submit' }

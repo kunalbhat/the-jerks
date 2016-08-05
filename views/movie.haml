@@ -1,10 +1,9 @@
 .row.row__flex
   .column.column__flex-one
-    %img{ class: "img-responsive", src: "#{@film_data[:image_url]}" }
+    %img{ class: "img-responsive", src: "#{@movie.poster_url}", width: '210', height: 'auto' }
 
   .column.column__flex-four
-    %h2="#{@film_data[:title]} (#{@film_data[:year]})"
-    %h4= @film_data[:certification]
-    %p= @film_data[:overview]
-
-    %a{ class: "button", href: "/proposals/new/#{@film_data[:id]}" } Add to Proposals
+    %h2= "#{@movie.title} (#{@movie.year})"
+    /* %h4 certification */
+    %p= @movie.overview
+    %a{ class: "button", href: "/proposals/new/#{@movie.id}" } Add to Proposals
