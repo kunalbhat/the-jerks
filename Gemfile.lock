@@ -104,6 +104,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   data_mapper
   dm-postgres-adapter
   dotenv
