@@ -12,9 +12,6 @@ require_relative 'config/datamapper'
 # Models
 require_relative 'models/post'
 
-# Decorators
-require_relative 'decorators/indicator_style'
-
 # Define Sass
 get '/stylesheet.css' do
   scss :stylesheet, :style => :expanded
