@@ -1,3 +1,5 @@
+require_relative '../config/datamapper'
+
 class Proposal
   include DataMapper::Resource
 

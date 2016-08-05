@@ -1,3 +1,5 @@
+require_relative '../config/datamapper'
+
 class Movie
   include DataMapper::Resource
 
