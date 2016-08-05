@@ -1,6 +1,8 @@
+%h2 Your search of <b>"#{params[:q]}"</b> returned #{@search_results.count} results
+
 %section{ class: 'search-results', id: 'search_results' }
   %ul{ class: 'search-results-list', id: 'search_results_list' }
     - @search_results.each do |result|
       %li
         %a{ href: "/movie/#{result['id']}"}
-          =result['title']
+          ="#{result['title']} (#{DateTime.parse(result['release_date']).year})"
