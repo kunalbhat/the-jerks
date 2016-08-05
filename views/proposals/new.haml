@@ -1,1 +1,14 @@
-%h2 Add a new Proposal
+%h1 J is proposing #{@film['title']} be added to the list
+
+%form{ action: '/proposals/create/' }
+  %select{ name: 'proposer' }
+    %option{ value: 'J' } J
+    %option{ value: 'E' } E
+    %option{ value: 'R' } R
+    %option{ value: 'K' } K
+    %option{ value: 'S' } S
+  %label
+    State your case:
+    %textarea{ name: 'proposal_text' }
+  %input{ type: 'hidden', name: 'id', value: "#{@film['tmdb_id']}" }
+  %input{ type: 'submit', value: 'Submit' }

@@ -7,5 +7,4 @@
     %h4= @film_data[:certification]
     %p= @film_data[:overview]
 
-    %a{ class: "button", href: "/proposals/new" } Add to Proposals
-
+    %a{ class: "button", href: "/proposals/new/#{@film_data[:id]}" } Add to Proposals

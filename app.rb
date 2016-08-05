@@ -71,16 +71,26 @@ def get_movie_by_id(id)
 end
 
 get '/' do
+  haml :index
+end
+
+get '/list' do
   @films = Post.all
 
-  haml :index
+  haml :list
 end
 
 get '/proposals' do
   haml :"proposals/index"
 end
 
-get '/proposals/new' do
+get '/proposals/new/:id' do
+  id = params[:id]
+
+  @film = get_movie_by_id(id)
+
+  puts @film
+
   haml :"proposals/new"
 end
 
@@ -110,7 +120,7 @@ get '/movie/:id' do
   overview      = film_data['overview']
   year          = DateTime.parse(film_data['release_date']).year
 
-  @film_data = { title: title, overview: overview, year: year, image_url: image_url }
+  @film_data = { id: id, title: title, overview: overview, year: year, image_url: image_url }
 
   haml :movie
 end
