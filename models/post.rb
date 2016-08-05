@@ -16,4 +16,5 @@ class Post
   property :removal_flag  , String
 end
 
-DataMapper.finalize.auto_upgrade!
+DataMapper.finalize
+DataMapper.auto_upgrade!
