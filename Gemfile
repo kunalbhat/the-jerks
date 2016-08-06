@@ -10,6 +10,7 @@ group :web do
   gem 'dm-postgres-adapter'
   gem 'haml'
   gem 'json'
+  gem 'pg'
   gem 'rest-client'
   gem 'sass'
   gem 'sinatra'

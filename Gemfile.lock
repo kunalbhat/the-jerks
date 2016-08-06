@@ -83,6 +83,7 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     netrc (0.11.0)
+    pg (0.18.4)
     puma (3.6.0)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -125,6 +126,7 @@ DEPENDENCIES
   dotenv
   haml
   json
+  pg
   puma
   rest-client
   sass
