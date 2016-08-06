@@ -126,8 +126,6 @@ class TheJerksApp < Sinatra::Base
       @proposals.push({ proposal: proposal, movie: MovieInfo.new(proposal.tmdb_id) })
     end
 
-    p @proposals
-
     haml :"proposals/index"
   end
 
