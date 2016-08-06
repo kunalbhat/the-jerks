@@ -8,11 +8,20 @@
   %body
     %section.site-container.container__short
       -if flash[:success]
-        %div.flash.flash__success
+        %div.alert.alert__success
           =flash[:success]
+          %button.button__dismiss.js-dismiss-alert
 
       -if flash[:error]
-        %div.flash.flash__error
+        %div.alert.alert__error
           =flash[:error]
+          %button.button__dismiss.js-dismiss-alert
 
       = yield
+
+:javascript
+  $(".js-dismiss-alert").on("click", function(e) {
+    e.preventDefault();
+
+    $(this).parents(".alert").fadeOut();
+  });

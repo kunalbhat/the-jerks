@@ -31,10 +31,12 @@
       -if flash[:success]
         %div.alert.alert__success
           =flash[:success]
+          %button.button__dismiss.js-dismiss-alert
 
       -if flash[:error]
         %div.alert.alert__error
           =flash[:error]
+          %button.button__dismiss.js-dismiss-alert
 
       = yield
 
@@ -45,5 +47,11 @@
 
   $(".account__menu").on("click", function(e) {
     e.stopPropagation();
+  });
+
+  $(".js-dismiss-alert").on("click", function(e) {
+    e.preventDefault();
+
+    $(this).parents(".alert").fadeOut();
   });
 
