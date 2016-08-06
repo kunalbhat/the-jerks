@@ -35,7 +35,6 @@ end
 class TheJerksApp < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
-  set :session_secret, "supersecret"
 
   use Warden::Manager do |config|
     config.serialize_into_session{|user| user.id }

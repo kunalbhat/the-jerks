@@ -6,26 +6,44 @@
     %link{ href: '/stylesheet.css', rel: 'stylesheet' }
     %script{ src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js' }
   %body
-    %header.site-header
-      .row.row__flex
-        %div.column.column__flex-one.flex-center
-          %h1.site-logo The JERKS
-        %div.column.column__flex-three
-          %form{ class: 'search-form', id: 'search_form', action: '/search', method: 'get' }
-            %input{ class: 'search-input', name: 'q', placeholder: 'Search for a film', type: 'search', value: '' }
-        %div.column.column__flex-one.flex-center.text-right
-          %nav.site-nav
-            %a{ href: '/'} The List
-            %a{ href: '/proposals' } Proposals
-            %a{ href: '/auth/logout' } Log out
+    %header.site-header.row.row__flex
+      %div.column.column__flex-six
+        .row.row__flex
+          %div.column.column__flex-one.flex-center
+            %h1.site-logo The JERKS
+          %div.column.column__flex-four
+            %form{ class: 'search-form', id: 'search_form', action: '/search', method: 'get' }
+              %input{ class: 'search-input', name: 'q', placeholder: 'Search for a film', type: 'search', value: '' }
+          %div.column.column__flex-one.flex-center.text-right
+            %nav.site-nav
+              %a{ href: '/', class: "#{request.path_info == '/' ? 'site-nav__item current' : 'site-nav__item'}" } The List
+              %a{ href: '/proposals', class: "#{request.path_info == '/proposals' ? 'site-nav__item current' : 'site-nav__item'}" } Proposals
+      %div.column
+        %div.account__dropdown.column.flex-center.js-account-dropdown
+          %span.account__icon=env['warden'].user['initial']
+          %ul.account__menu.hide
+            %li.account__menu-item
+              %span= env['warden'].user.username
+            %li.account__menu-item
+              %a{ href: '/auth/logout' }Log out
 
     %section.site-container
       -if flash[:success]
-        %div.flash.flash__success
+        %div.alert.alert__success
           =flash[:success]
 
       -if flash[:error]
-        %div.flash.flash__error
+        %div.alert.alert__error
           =flash[:error]
 
       = yield
+
+:javascript
+  $(".js-account-dropdown").on("click", function() {
+    $(this).toggleClass("expanded").find(".account__menu").toggleClass("hide");
+  });
+
+  $(".account__menu").on("click", function(e) {
+    e.stopPropagation();
+  });
+

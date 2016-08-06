@@ -70,11 +70,10 @@ table {
 }
 
 .site-header {
-  background-color: #fff;
-  border-bottom: 1px solid $border-color;
+  background-color: #262C39;
+  border-bottom: 1px solid darken(#262c39, 10%);
   box-shadow: 0 0 3px #999;
   display: flex;
-  padding: 10px 30px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -87,20 +86,38 @@ table {
   -webkit-box-pack: center;
      -ms-flex-pack: center;
    justify-content: center;
+
+  .column > .row {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.site-logo {
+  color: #fff;
+  font-weight: 400;
 }
 
 .site-nav {
   width: 100%;
 
-  a {
+  &__item {
     display: inline-block;
+    font-weight: 700;
+    margin-left: 1rem;
     padding: 5px;
     text-align: center;
+
+    &:link, &:active, &:focus, &:visited, &:hover {
+      color: lighten(#262C39, 35%);
+      text-decoration: none;
+    }
+
+    &.current { color: #fff; }
   }
 }
 
 .site-container {
-  margin-top: 70px;
+  margin-top: 60px;
   padding: 30px;
 
   &.container__short {
@@ -142,7 +159,8 @@ table {
 }
 
 .search-input {
-  border: 1px solid $border-color;
+  background-color: darken(#262C39, 5%);
+  border: 1px solid transparent;
   border-radius: 5px;
   font-size: 15px;
   outline: none;
@@ -158,7 +176,7 @@ table {
           transition: border-color 0.2s linear;
 
   &:focus {
-    border-color: #222;
+    border: 1px solid #111;
   }
 }
 
@@ -177,6 +195,8 @@ table {
   &__flex-two   { flex: 2; }
   &__flex-three { flex: 3; }
   &__flex-four  { flex: 4; }
+  &__flex-five  { flex: 5; }
+  &__flex-six   { flex: 6; }
 
   &.flex-center {
     display: flex;
@@ -253,7 +273,8 @@ table {
   }
 }
 
-.flash {
+// Alerts
+.alert {
   background: #dadada;
   border: 1px solid $border-color;
   border-radius: 3px;
@@ -272,5 +293,60 @@ table {
     background-color: $error_color;
     border-color: darken($error_color, 10%);
     color: #fff;
+  }
+}
+
+// Account dropdown
+.account {
+  &__dropdown {
+    cursor: pointer;
+    display: flex;
+    height: 60px;
+    position: relative;
+    width: 60px;
+
+    &:hover, &.expanded {
+      background: darken(#262c39, 5%);
+    }
+  }
+
+  &__icon {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 36px;
+    line-height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    width: 36px;
+  }
+
+  &__menu {
+    background: darken(#262c39, 5%);
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-transform: none;
+    top: 100%;
+    width: 260px;
+
+    &.hide { display: none; }
+
+    &-item {
+      border-bottom: 1px solid darken(#262C39, 10%);
+      color: #fff;
+      cursor: default;
+      text-align: left;
+      list-style-type: none;
+      padding: 1rem 1.5rem;
+
+      > a  { color: #fff; }
+    }
   }
 }
