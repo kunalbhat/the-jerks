@@ -119,15 +119,40 @@ class TheJerksApp < Sinatra::Base
   get '/proposals' do
     env['warden'].authenticate!
 
+    proposals = Proposal.all
+    @proposals = []
+
+    proposals.each do |proposal|
+      @proposals.push({ proposal: proposal, movie: MovieInfo.new(proposal.tmdb_id) })
+    end
+
+    p @proposals
+
     haml :"proposals/index"
   end
 
   get '/proposals/new/:id' do
     env['warden'].authenticate!
 
-    @movie = MovieInfo.new(params[:id])
+    if defined? params[:id]
+      @movie = MovieInfo.new(params[:id])
+    end
 
     haml :"proposals/new"
+  end
+
+  post '/proposals/new' do
+    env['warden'].authenticate!
+
+    tmdb_id  = params[:tmdb_id]
+    body     = params[:body]
+    username = params[:username]
+    date     = Time.now
+
+    @proposal = Proposal.new(tmdb_id: tmdb_id, proposal_text: body, username: username, date: date)
+    @proposal.save
+
+    redirect '/proposals'
   end
 
   get '/search' do

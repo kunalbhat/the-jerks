@@ -1,14 +1,10 @@
-%h1 J is proposing #{@movie.title} be added to the list
+%h2
+  %strong.username #{env['warden'].user['initial']}
+  is proposing <strong>#{@movie.title} (#{DateTime.parse(@movie.release_date).year})</strong> be added to The List
 
-%form{ action: '/proposals/create/' }
-  %select{ name: 'proposer' }
-    %option{ value: 'J' } J
-    %option{ value: 'E' } E
-    %option{ value: 'R' } R
-    %option{ value: 'K' } K
-    %option{ value: 'S' } S
-  %label
-    State your case:
-    %textarea{ name: 'proposal_text' }
-  %input{ type: 'hidden', name: 'id', value: "#{@movie.id}" }
-  %input{ type: 'submit', value: 'Submit' }
+%form.form{ action: '/proposals/new', method: 'post' }
+  .input-group
+    %textarea.textarea.form-control{ name: 'body', placeholder: 'State your case' }
+    %input{ type: 'hidden', name: 'tmdb_id', value: "#{@movie.id}" }
+    %input{ type: 'hidden', name: 'username', value: "#{env['warden'].user['initial']}" }
+    %button.button.button__submit{ type: 'submit' } Submit

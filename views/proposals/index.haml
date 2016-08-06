@@ -1,3 +1,15 @@
 %h2 Proposals
 
-
+%ul.proposals-list
+  - @proposals.each do |proposal|
+    %li.proposals-list__item.row.row__flex
+      %img.movie-poster{ src: "#{proposal[:movie].poster_url}" }
+      .column.column__flex-four
+        %h4.movie-title= "<strong>#{proposal[:movie].title} (#{DateTime.parse(proposal[:movie].release_date).year})</strong> was proposed by <em class='username'>#{proposal[:proposal].username}</em> on #{proposal[:proposal].date.strftime('%x')}"
+        %p.movie-proposal-text "#{proposal[:proposal].proposal_text}"
+      .column.column__flex-one.flex-center{style: 'margin-right: 20px;' }
+        %span{ class: proposal[:proposal].username == 'j' ? 'account-icon success disabled' : 'account-icon muted' } J
+        %span{ class: proposal[:proposal].username == 'e' ? 'account-icon success disabled' : 'account-icon muted' } E
+        %span{ class: proposal[:proposal].username == 'r' ? 'account-icon success disabled' : 'account-icon muted' } R
+        %span{ class: proposal[:proposal].username == 'k' ? 'account-icon success disabled' : 'account-icon muted' } K
+        %span{ class: proposal[:proposal].username == 's' ? 'account-icon success disabled' : 'account-icon muted' } S

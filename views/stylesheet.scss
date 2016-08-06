@@ -57,6 +57,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.username {
+  text-transform: uppercase;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -171,6 +175,7 @@ table {
   background-color: $dark-color-dark;
   border: 1px solid transparent;
   border-radius: 5px;
+  color: #fff;
   font-size: 15px;
   outline: none;
   padding: 10px 0 10px 3px;
@@ -232,7 +237,7 @@ table {
 .text-left { text-align: left; }
 
 .button {
-  border: 1px solid $highlight-color;
+  border: 1px solid $dark-color;
   border-radius: 3px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   cursor: pointer;
@@ -242,13 +247,12 @@ table {
   padding: 0.7rem 1rem;
 
   &__submit {
-    background: $highlight-color;
+    background: $dark-color;
     color: #fff;
   }
 }
 
 .button:hover {
-  border-color: darken($highlight-color, 10%);
   text-decoration: none;
 }
 
@@ -284,6 +288,10 @@ table {
     &:focus {
       border-color: #222;
     }
+  }
+
+  .textarea {
+    min-height: 10rem;
   }
 }
 
@@ -397,4 +405,74 @@ table {
       > a  { color: #fff; }
     }
   }
+}
+
+// Proposals
+.proposals-list {
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    list-style-type: none;
+
+    .movie-poster {
+      display: inline-block;
+      margin-right: 1rem;
+      max-height: 100px;
+    }
+
+    .movie-title {
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+
+    .movie-proposal-text {
+      margin: 0;
+    }
+  }
+}
+
+// Account icon
+
+.account-icon {
+  background: transparent;
+  border: 2px solid $dark-color;
+  border-radius: 50%;
+  color: $dark-color;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 36px;
+  line-height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: uppercase;
+  width: 36px;
+
+  &.success {
+    background: $success-color;
+    border-color: $success-color;
+    color: #fff;
+  }
+
+  &.muted {
+    border-color: $dark-color-light;
+    color: $dark-color-light;
+  }
+
+  &.disabled {
+    cursor: default;
+  }
+
+  &.actionable {
+    cursor: pointer;
+  }
+}
+
+.username {
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
 }

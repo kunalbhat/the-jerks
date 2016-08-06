@@ -5,8 +5,9 @@ class Proposal
 
   property :id, Serial, :key => true
   property :tmdb_id, Integer
-  property :username, String, :length => 3..50
+  property :username, String, :length => 1
   property :proposal_text, Text
+  property :date, DateTime
 end
 
 DataMapper.finalize
