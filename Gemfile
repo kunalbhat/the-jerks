@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'puma'
-gem 'warden'
 
 group :web do
   gem 'bcrypt'
@@ -14,7 +13,9 @@ group :web do
   gem 'rest-client'
   gem 'sass'
   gem 'sinatra'
+  gem 'sinatra-activerecord'
   gem 'sinatra-flash', require: 'sinatra/flash'
+  gem 'warden'
 end
 
 group :development do
