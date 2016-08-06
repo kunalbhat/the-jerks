@@ -15,9 +15,17 @@
             %input{ class: 'search-input', name: 'q', placeholder: 'Search for a film', type: 'search', value: '' }
         %div.column.column__flex-one.flex-center.text-right
           %nav.site-nav
-            %a{ href: '/list'} The List
+            %a{ href: '/'} The List
             %a{ href: '/proposals' } Proposals
-            %a{ href: '/logout' } Log out
+            %a{ href: '/auth/logout' } Log out
 
     %section.site-container
+      -if flash[:success]
+        %div.flash.flash__success
+          =flash[:success]
+
+      -if flash[:error]
+        %div.flash.flash__error
+          =flash[:error]
+
       = yield

@@ -6,5 +6,13 @@
     %link{ href: '/stylesheet.css', rel: 'stylesheet' }
     %script{ src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js' }
   %body
-    %section.site-container
+    %section.site-container.container__short
+      -if flash[:success]
+        %div.flash.flash__success
+          =flash[:success]
+
+      -if flash[:error]
+        %div.flash.flash__error
+          =flash[:error]
+
       = yield

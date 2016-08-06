@@ -1,0 +1,9 @@
+%h2 JERKS Admin
+
+%form{ action: '/auth/login', method: 'post', class: 'form form__login' }
+  .input-group
+    %input.form-control{ type: 'email', name: 'user[username]', placeholder: 'Email address' }
+  .input-group
+    %input.form-control{ type: 'password', name: 'user[password]', placeholder: 'Password' }
+
+  %button{ class: 'button button__submit', type: 'submit' } Log in

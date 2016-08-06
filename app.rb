@@ -79,30 +79,61 @@ class TheJerksApp < Sinatra::Base
   end
 
   get '/' do
-    haml :index, layout: :'layouts/blank'
-  end
+    env['warden'].authenticate!
 
-  get '/login' do
-    haml :login, layout: :'layouts/blank'
-  end
-
-  get '/list' do
     @movies = Movie.all
 
-    haml :list
+    haml :index
+  end
+
+  get '/auth/login' do
+    haml :"auth/login", layout: :'layouts/blank'
+  end
+
+  post '/auth/login' do
+    env['warden'].authenticate!
+
+    flash[:success] = "Successfully logged in"
+
+    if session[:return_to].nil?
+      redirect '/'
+    else
+      redirect session[:return_to]
+    end
+  end
+
+  get '/auth/logout' do
+    env['warden'].raw_session.inspect
+    env['warden'].logout
+    flash[:success] = 'Successfully logged out'
+    redirect '/'
+  end
+
+  post '/auth/unauthenticated' do
+    session[:return_to] = env['warden.options'][:attempted_path] if session[:return_to].nil?
+
+    # Set the error and use a fallback if the message is not defined
+    flash[:error] = env['warden.options'][:message] || "You must log in"
+    redirect '/auth/login'
   end
 
   get '/proposals' do
+    env['warden'].authenticate!
+
     haml :"proposals/index"
   end
 
   get '/proposals/new/:id' do
+    env['warden'].authenticate!
+
     @movie = MovieInfo.new(params[:id])
 
     haml :"proposals/new"
   end
 
   get '/search' do
+    env['warden'].authenticate!
+
     query           = params[:q]
     results         = search_movie(query)
     @search_results = []
@@ -115,6 +146,8 @@ class TheJerksApp < Sinatra::Base
   end
 
   get '/movie/:id' do
+    env['warden'].authenticate!
+
     @movie = MovieInfo.new(params[:id])
 
     haml :movie
