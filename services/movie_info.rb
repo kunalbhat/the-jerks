@@ -45,7 +45,7 @@ class MovieInfo
   end
 
   def release_date
-    @_release_date = get_movie_by_id['release_date']
+    get_movie_by_id['release_date'].empty? ? nil : @_release_date = get_movie_by_id['release_date']
   end
 
   def release_dates
@@ -53,7 +53,7 @@ class MovieInfo
   end
 
   def year
-    @_year = DateTime.parse(release_date).year
+    release_date.nil? ? nil : @_year = DateTime.parse(release_date).year
   end
 
   def overview

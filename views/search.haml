@@ -5,4 +5,5 @@
     - @search_results.each do |result|
       %li
         %a{ href: "/movie/#{result['id']}"}
-          ="#{result['title']} (#{DateTime.parse(result['release_date']).year})"
+          = result['title']
+          = result['release_date'].empty? ? nil : "(#{DateTime.parse(result['release_date']).year})"
