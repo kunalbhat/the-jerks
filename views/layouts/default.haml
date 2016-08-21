@@ -10,21 +10,25 @@
       %div.column.column__flex-six
         .row.row__flex
           %div.column.column__flex-one.flex-center
-            %h1.site-logo The JERKS
+            %h1.site-logo <span class='mobile__hide'>The</span> JERKS
           %div.column.column__flex-four
             %form{ class: 'search-form', id: 'search_form', action: '/search', method: 'get' }
               %input{ class: 'search-input', name: 'q', placeholder: 'Search for a film', type: 'search', value: '' }
           %div.column.column__flex-one.flex-center.text-right
-            %nav.site-nav
+            %nav.site-nav.mobile__hide
               %a{ href: '/', class: "#{request.path_info == '/' ? 'site-nav__item current' : 'site-nav__item'}" } The List
               %a{ href: '/proposals', class: "#{request.path_info == '/proposals' ? 'site-nav__item current' : 'site-nav__item'}" } Proposals
       %div.column
         %div.account__dropdown.column.flex-center.js-account-dropdown
           %span.account__icon=env['warden'].user['initial']
           %ul.account__menu.hide
-            %li.account__menu-item
+            %li{ class: 'account__menu-item mobile__show' }
+              %a{ href: '/' } The List
+            %li{ class: 'account__menu-item mobile__show' }
+              %a{ href: '/proposals' } Proposals
+            %li{ class: 'account__menu-item' }
               %span= env['warden'].user.username
-            %li.account__menu-item
+            %li{ class: 'account__menu-item' }
               %a{ href: '/auth/logout' }Log out
 
     %section.site-container

@@ -143,18 +143,19 @@ class TheJerksApp < Sinatra::Base
     env['warden'].authenticate
 
     jerks = ['j', 'e', 'r', 'k', 's']
+    votes = []
 
     tmdb_id  = params[:tmdb_id]
     body     = params[:body]
     username = params[:username]
     date     = Time.now
 
-    jerks.each do |intiial|
-      var_name = "@#{initial}_vote"
-      puts username.casecmp(initial) == 0 ? var_name = true : var_name = false
+    jerks.each do |initial|
+      username.casecmp(initial) == 0 ? vote = true : vote = false
+      votes.push(vote)
     end
 
-    @proposal = Proposal.new(tmdb_id: tmdb_id, proposal_text: body, username: username, date: date, j_vote: j_vote, e_vote: e_vote, r_vote: r_vote, k_vote: k_vote, s_vote: s_vote)
+    @proposal = Proposal.new(tmdb_id: tmdb_id, proposal_text: body, username: username, date: date, j_vote: votes[0], e_vote: votes[1], r_vote: votes[2], k_vote: votes[3], s_vote: votes[4])
     @proposal.save
 
     redirect '/proposals'

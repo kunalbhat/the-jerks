@@ -9,6 +9,8 @@ $dark-color-dark:    darken($dark-color, 5%);
 $dark-color-medium:  lighten($dark-color, 10%);
 $dark-color-light:   lighten($dark-color, 35%);
 
+$mobile_breakpoint_sm: '640px';
+
 // Global styling
 * {
   box-sizing: border-box;
@@ -104,6 +106,12 @@ table {
 .site-logo {
   color: #fff;
   font-weight: 400;
+}
+
+@media (max-width: $mobile_breakpoint_sm) {
+  .site-logo {
+    font-size: 1rem;
+  }
 }
 
 .site-nav {
@@ -507,5 +515,24 @@ table {
     color: $dark-color-medium;
     font-weight: 600;
     text-align: center;
+  }
+}
+
+.mobile__show {
+  display: none;
+  visibility: hidden;
+}
+
+@media (max-width: $mobile_breakpoint_sm) {
+  .mobile {
+    &__hide {
+      display: none;
+      visibility: hidden;
+    }
+
+    &__show {
+      display: block;
+      visibility: visible;
+    }
   }
 }
